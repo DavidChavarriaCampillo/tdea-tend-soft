@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+      {% if cond %}
+        <nav class="navbar navbar-expand-lg navbar-transparent">
+            <div class="container">
+              <div class="navbar-translate">
+                <a class="navbar-brand" href="#pablo">Transparent</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#example-navbar-transparent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-bar bar1"></span>
+                  <span class="navbar-toggler-bar bar2"></span>
+                  <span class="navbar-toggler-bar bar3"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse" id="example-navbar-transparent">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#pablo">
+                      <i class="fab fa-facebook-square"></i>
+                      <p>Facebook</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#pablo">
+                      <i class="fab fa-twitter"></i>
+                      <p>Twitter</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#pablo">
+                      <i class="fab fa-instagram"></i>
+                      <p>Instagram</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        {% endif %}
+        {% block contenido %}{% endblock %}
+    </body>
+</html>
