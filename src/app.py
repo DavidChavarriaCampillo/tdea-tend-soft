@@ -1,3 +1,4 @@
+from re import template
 from flask import Flask, jsonify, render_template, request, redirect
 from flask_mysqldb import MySQL
 from config import obtener_conexion
@@ -7,19 +8,39 @@ app = Flask(__name__)
 
 conexion = MySQL(app)
 
-logueado = False
 mensaje = False
+logueado = False
 
 #Funcion listar cursos
 
-@app.route('/Home') #Ruta de la funcion
-def Home():
-    return render_template("Home.html")
+if logueado:
+    @app.route('/')
+    @app.route('/Home') #Ruta de la funcion
+    def Home():
+        return render_template("Home.html")
 
-@app.route('/')
-@app.route('/Login')
-def Login():
-    return render_template("Login.html", cond = logueado)
+if logueado == False:
+    @app.route('/')
+    @app.route('/Login')
+    def Login():
+        return render_template("Login.html", logueado = False)
+
+@app.route('/Home', methods = ["POST"])
+def loguear():
+    usuario = request.form["username"]
+    contraceña = request.form["password"]
+    usuarios = Controlador.logear()
+    cond = False
+    usuari = ""
+    for usu in usuarios:
+        if usu[0] == usuario and usu[1] == contraceña:
+            usuari = usu[0]
+            condi = True
+    if condi :
+        render_template("Login.html", logueado = True)
+        return render_template("Home.html", usuari = usuari, cond = True)
+    else:
+        return redirect("/Login")
 
 @app.route("/registro")
 def registro():
