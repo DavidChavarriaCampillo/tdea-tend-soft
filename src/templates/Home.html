@@ -2,5 +2,8 @@
 {% block contenido %}
 
     <h1>Bienvenido usuario {{usuari}}</h1>
+    <div id="register-link" class="text-right">
+        <a href="{{url_for('Logout')}}" class="text-info">Logout</a>
+    </div>
 
 {% endblock %}
